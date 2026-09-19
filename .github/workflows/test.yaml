@@ -1,0 +1,11 @@
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-slim
+    steps:
+      - id: test 
+        run: echo 'test={"a":1}' >> $GITHUB_OUTPUT
+      - run: |
+          echo ${{ fromJSON(steps.test.outputs.test).a }}
